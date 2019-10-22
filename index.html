@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link href="https://cdn.bootcss.com/plyr/3.5.6/plyr.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/plyr/3.5.6/plyr.js"></script>
+
+    <style>
+        .player-container {
+            width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="player-container">
+    <video
+            id="player" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"></video>
+</div>
+<script>
+    const log = console.log;
+
+    let player = new Plyr('#player', {
+        hideControls: true
+    });
+    player.hideControls = true;
+
+    player.on('timeupdate', e => {
+        let {timeStamp} = e;
+        log('current', player.currentTime);
+    });
+    player.on('play', e => {
+        log('play');
+    });
+
+    player.on('pause', e => {
+        log('pause');
+    });
+
+</script>
+</body>
+</html>
